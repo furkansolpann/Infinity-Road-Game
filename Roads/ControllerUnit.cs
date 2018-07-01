@@ -35,7 +35,7 @@ public class ControllerUnit : MonoBehaviour {
 		isRotate = false;
 		
 		for (int i = 0; i < allRoads.Length; i++) {
-            allRoads[i] = spawnRoad(controlCrossRoad());
+            		allRoads[i] = spawnRoad(controlCrossRoad());
 		}
  
 
@@ -65,7 +65,7 @@ public class ControllerUnit : MonoBehaviour {
         //Mathf.Abs(playerTransform.position.z - lastTrack.z) < screenOnRoad * roadLenght || Mathf.Abs(playerTransform.position.x - lastTrack.x) < screenOnRoad * roadLenght
 		if (Vector3.Distance(playerTransform.position,lastTrack) < screenOnRoad * roadLenght) {
             
-            Destroy(allRoads[roadCounter]);
+           		Destroy(allRoads[roadCounter]);
 			allRoads[roadCounter]= spawnRoad(controlCrossRoad());
 			roadCounter = (roadCounter + 1) % allRoads.Length;
 			if (deletefirstRoad) {
@@ -80,7 +80,6 @@ public class ControllerUnit : MonoBehaviour {
 		
 		GameObject road;
 		road = Instantiate (roadPrefabs [roadType]) as GameObject;
-
 		road.transform.SetParent (transform);
 		Vector3 temp = lastTrack;
 		int vectorSize = (int)roadLenght;
@@ -89,10 +88,8 @@ public class ControllerUnit : MonoBehaviour {
 			vectorSize = -vectorSize;
 		}
 
-
 		if (isRotate && roadType == 0) {
-			road.transform.Rotate (new Vector3 (0, 90, 0));
-			
+			road.transform.Rotate (new Vector3 (0, 90, 0));	
 		}
 
 		if (XorZ) {
@@ -115,8 +112,6 @@ public class ControllerUnit : MonoBehaviour {
 			aicar.transform.position = temp;
 		}
 		road.transform.position = temp;
-
-
 
 		if (roadType == 1) { // sola dönüş
 			if(XorZ == false && goForward == true){
@@ -161,7 +156,6 @@ public class ControllerUnit : MonoBehaviour {
 			isRotate = !isRotate;
 			// sağa dönüş
 		}
-
 		lastTrack = temp;
 		return road;
 	}
